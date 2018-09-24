@@ -15,6 +15,7 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout>
+        <Button Text="Teste API" Pressed="Test_Pressed" />
         <ListView x:Name="ItemsListView"
                 ItemsSource="{Binding Items}"
                 VerticalOptions="FillAndExpand"
