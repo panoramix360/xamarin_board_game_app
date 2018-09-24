@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using App.Models;
 using App.Views;
 using App.ViewModels;
+using DomainModel.Entities;
 
 namespace App.Views
 {
@@ -48,6 +49,11 @@ namespace App.Views
 
             if (viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
+        }
+
+        private void Test_Pressed(object sender, EventArgs e)
+        {
+            App.Service.GetAllBoardGamesByUser(new User("lucasreis3000"));
         }
     }
 }

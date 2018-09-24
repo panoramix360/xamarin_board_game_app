@@ -2,6 +2,10 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using App.Views;
+using BoardGameApp;
+using DomainService;
+using Data.Services;
+using Data.Repositories;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace App
@@ -9,11 +13,13 @@ namespace App
     public partial class App : Application
     {
 
+        public static BoardGameAppService Service { get; set; }
+
         public App()
         {
             InitializeComponent();
 
-
+            Service = new BoardGameAppService(new BoardGameService(new BoardGameSQLiteRepository(), new BoardGameRestApi()));
             MainPage = new MainPage();
         }
 
