@@ -1,31 +1,40 @@
 ﻿using DomainModel.Entities;
 using DomainModel.Interfaces;
-using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Data.Services
 {
     public class BoardGameRestApi : IBoardGameAPI
     {
-        private string _baseUrl = "https://bgg-json.azurewebsites.net";
-        private RestClient _restClient;
+        private RestService _restService;
+        private string _collectionUrl = "collection/";
 
         public BoardGameRestApi()
         {
-            _restClient = new RestClient(_baseUrl);
+            _restService = new RestService();
         }
 
-        public IEnumerable<BoardGame> GetAllByUser(User user)
+        public async Task<IEnumerable<BoardGame>> GetAllByUser(User user)
         {
-            RestRequest request = new RestRequest("collection/{userName}");
-            request.AddUrlSegment("userName", user.Name);
+            string strJson = await _restService.GetRequest(_collectionUrl + user.Name);
 
-            IRestResponse response = _restClient.Execute(request);
-            var content = response.Content;
+            IEnumerable<BoardGame> boardGames = null;
 
-            return new List<BoardGame>();
+            try
+            {
+                boardGames = Newtonsoft.Json.JsonConvert
+                .DeserializeObject<IEnumerable<BoardGame>>(strJson);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
+            
+            return boardGames;
         }
     }
 }

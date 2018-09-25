@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DomainModel.Interfaces
 {
     public interface IBoardGameAPI
     {
-        IEnumerable<BoardGame> GetAllByUser(User user);
+        Task<IEnumerable<BoardGame>> GetAllByUser(User user);
     }
 }

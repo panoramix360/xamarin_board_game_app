@@ -53,7 +53,7 @@ namespace App.Views
 
         private void Test_Pressed(object sender, EventArgs e)
         {
-            App.Service.GetAllBoardGamesByUser(new User("lucasreis3000"));
+            App.Service.GetAllBoardGamesByUser(new User("NotFromEarthMe"));
         }
     }
 }

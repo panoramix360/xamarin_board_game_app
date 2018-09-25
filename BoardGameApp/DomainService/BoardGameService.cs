@@ -3,6 +3,7 @@ using DomainModel.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DomainService
 {
@@ -17,7 +18,7 @@ namespace DomainService
             _api = api;
         }
 
-        public IEnumerable<BoardGame> GetAllByUser(User user)
+        public Task<IEnumerable<BoardGame>> GetAllByUser(User user)
         {
             return _api.GetAllByUser(user);
         }

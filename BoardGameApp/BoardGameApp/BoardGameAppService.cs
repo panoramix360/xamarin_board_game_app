@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BoardGameApp
 {
@@ -20,7 +21,7 @@ namespace BoardGameApp
             BoardGames = new ObservableCollection<BoardGame>();
         }
 
-        public IEnumerable<BoardGame> GetAllBoardGamesByUser(User user)
+        public Task<IEnumerable<BoardGame>> GetAllBoardGamesByUser(User user)
         {
             return _boardGameService.GetAllByUser(user);
         }
