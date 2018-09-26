@@ -55,5 +55,10 @@ namespace App.Views
         {
             App.Service.GetAllBoardGamesByUser(new User("NotFromEarthMe"));
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }
