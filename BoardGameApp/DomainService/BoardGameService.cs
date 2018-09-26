@@ -1,4 +1,5 @@
 ﻿using DomainModel.Entities;
+using DomainModel.EntitiesDTO;
 using DomainModel.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,10 @@ namespace DomainService
             _api = api;
         }
 
-        public Task<IEnumerable<BoardGame>> GetAllByUser(User user)
+        public async Task<IEnumerable<BoardGame>> GetAllByUser(User user)
         {
-            return _api.GetAllByUser(user);
+            IEnumerable<BoardGameDTO> boardGamesDTO = await _api.GetAllByUser(user);
+            return new List<BoardGame>();
         }
 
         public IEnumerable<BoardGame> GetAll()

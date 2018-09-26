@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace Data.Services
@@ -12,11 +13,12 @@ namespace Data.Services
         public RestService()
         {
             _httpClient = new HttpClient();
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public async Task<string> GetRequest(string url)
         {
-            var response = await _httpClient.GetAsync(new Uri(_baseUrl + url));
+            var response = await _httpClient.GetAsync(_baseUrl + url);
 
             if(response.IsSuccessStatusCode)
             {

@@ -12,14 +12,14 @@ namespace DomainModel.Entities
         public Guid Id { get; set; }
 
         private int _gameId;
-        public int gameId
+        public int GameId
         {
             get => _gameId;
             set => SetPropertyAndNotify(ref _gameId, value);
         }
 
         private string _name;
-        public string name
+        public string Name
         {
             get => _name;
             set => SetPropertyAndNotify(ref _name, value);
@@ -27,63 +27,63 @@ namespace DomainModel.Entities
 
 
         private string _imageUrl;
-        public string imageUrl
+        public string ImageUrl
         {
             get => _imageUrl;
             set => SetPropertyAndNotify(ref _imageUrl, value);
         }
 
         private int _minPlayers;
-        public int minPlayers
+        public int MinPlayers
         {
             get => _minPlayers;
             set => SetPropertyAndNotify(ref _minPlayers, value);
         }
 
         private int _maxPlayers;
-        public int maxPlayers
+        public int MaxPlayers
         {
             get => _maxPlayers;
             set => SetPropertyAndNotify(ref _maxPlayers, value);
         }
 
         private int _playingTime;
-        public int playingTime
+        public int PlayingTime
         {
             get => _playingTime;
             set => SetPropertyAndNotify(ref _playingTime, value);
         }
 
         private bool _isExpansion;
-        public bool isExpansion
+        public bool IsExpansion
         {
             get => _isExpansion;
             set => SetPropertyAndNotify(ref _isExpansion, value);
         }
 
         private double _averageRating;
-        public double averageRating
+        public double AverageRating
         {
             get => _averageRating;
             set => SetPropertyAndNotify(ref _averageRating, value);
         }
 
         private int _rank;
-        public int rank
+        public int Rank
         {
             get => _rank;
             set => SetPropertyAndNotify(ref _rank, value);
         }
 
         private int _numPlays;
-        public int numPlays
+        public int NumPlays
         {
             get => _numPlays;
             set => SetPropertyAndNotify(ref _numPlays, value);
         }
 
         private bool _owned;
-        public bool owned
+        public bool Owned
         {
             get => _owned;
             set => SetPropertyAndNotify(ref _owned, value);
@@ -103,17 +103,17 @@ namespace DomainModel.Entities
                             bool _owned)
         {
             Id = Guid.NewGuid();
-            gameId = _gameId;
-            name = _name ?? string.Empty;
-            imageUrl = _imageUrl ?? string.Empty;
-            minPlayers = _minPlayers;
-            maxPlayers = _maxPlayers;
-            playingTime = _playingTime;
-            isExpansion = _isExpansion;
-            averageRating = _averageRating;
-            rank = _rank;
-            numPlays = _numPlays;
-            owned = _owned;
+            GameId = _gameId;
+            Name = _name ?? string.Empty;
+            ImageUrl = _imageUrl ?? string.Empty;
+            MinPlayers = _minPlayers;
+            MaxPlayers = _maxPlayers;
+            PlayingTime = _playingTime;
+            IsExpansion = _isExpansion;
+            AverageRating = _averageRating;
+            Rank = _rank;
+            NumPlays = _numPlays;
+            Owned = _owned;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

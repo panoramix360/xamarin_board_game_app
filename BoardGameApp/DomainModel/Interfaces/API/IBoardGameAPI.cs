@@ -1,13 +1,12 @@
 ﻿using DomainModel.Entities;
-using System;
+using DomainModel.EntitiesDTO;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DomainModel.Interfaces
 {
     public interface IBoardGameAPI
     {
-        Task<IEnumerable<BoardGame>> GetAllByUser(User user);
+        Task<IEnumerable<BoardGameDTO>> GetAllByUser(User user);
     }
 }
