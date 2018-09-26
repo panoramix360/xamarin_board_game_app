@@ -12,7 +12,7 @@ namespace App.ViewModels
 {
     public class SearchViewModel : BaseViewModel
     {
-        string searchText = string.Empty;
+        string searchText = "NotFromEarthMe";
         public string SearchText
         {
             get { return searchText; }

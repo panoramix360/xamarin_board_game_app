@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -12,6 +13,7 @@ namespace DomainModel.Entities
         public Guid Id { get; set; }
 
         private int _gameId;
+        [Key]
         public int GameId
         {
             get => _gameId;

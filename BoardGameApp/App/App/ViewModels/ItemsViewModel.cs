@@ -7,25 +7,27 @@ using Xamarin.Forms;
 
 using App.Models;
 using App.Views;
+using DomainModel.Entities;
+using System.Collections.Generic;
 
 namespace App.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<BoardGame> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            Items = new ObservableCollection<BoardGame>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewItemPage, BoardGame>(this, "AddItem", async (obj, item) =>
             {
-                var newItem = item as Item;
-                Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
+                var newItem = item as BoardGame;
+                //Items.Add(newItem);
+                //await DataStore.AddItemAsync(newItem);
             });
         }
 
@@ -39,7 +41,7 @@ namespace App.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+                var items = App.Service.GetAllBoardGamesOffline();
                 foreach (var item in items)
                 {
                     Items.Add(item);

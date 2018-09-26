@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
@@ -56,6 +57,19 @@ namespace Data.Repositories
             entry.State = EntityState.Modified;
             _db.SaveChanges();
             //####################################
+        }
+
+        public void SaveAll(IEnumerable<BoardGame> games)
+        {
+            _db.BoardGames.AddRange(games);
+            _db.SaveChanges();
+        }
+
+        public void RemoveAll()
+        {
+            foreach (var item in _db.BoardGames)
+                _db.BoardGames.Remove(item);
+            _db.SaveChanges();
         }
     }
 }

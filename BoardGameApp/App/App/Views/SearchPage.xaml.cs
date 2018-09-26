@@ -25,8 +25,8 @@ namespace App.Views
 
         async void OnSearchButtonClicked(object sender, EventArgs e)
         {
-            IEnumerable<BoardGame> games = await App.Service.GetAllBoardGamesByUser(new User(viewModel.SearchText));
-            await Navigation.PushAsync(new ItemsPage(games));
+            await App.Service.GetAllBoardGamesByUser(new User(viewModel.SearchText));
+            await Navigation.PushAsync(new ItemsPage());
         }
     }
 }

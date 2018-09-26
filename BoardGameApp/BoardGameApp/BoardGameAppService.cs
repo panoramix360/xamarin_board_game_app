@@ -30,6 +30,10 @@ namespace BoardGameApp
         {
             return _boardGameService.GetAll();
         }
-
+        
+        public IEnumerable<BoardGame> GetAllBoardGamesOffline()
+        {
+            return _boardGameService.GetBoardGamesDatabase();
+        }
     }
 }

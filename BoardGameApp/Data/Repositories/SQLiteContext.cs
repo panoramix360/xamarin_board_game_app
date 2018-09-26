@@ -5,12 +5,18 @@ namespace Data.Repositories
 {
     class SQLiteContext : DbContext
     {
+        private static bool _created = false;
         private string _dbPath;
 
         public SQLiteContext(string dbPath)
         {
             _dbPath = dbPath;
-            Database.EnsureCreated();
+            if (!_created)
+            {
+                _created = true;
+                Database.EnsureDeleted();
+                Database.EnsureCreated();
+            }
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

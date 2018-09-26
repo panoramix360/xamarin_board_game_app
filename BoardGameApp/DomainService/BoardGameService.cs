@@ -32,7 +32,14 @@ namespace DomainService
                 games.Add(boardGame);
             });
 
+            _repository.RemoveAll();
+            _repository.SaveAll(games);
             return games;
+        }
+
+        public IEnumerable<BoardGame> GetBoardGamesDatabase()
+        {
+            return _repository.GetAll();
         }
 
         public IEnumerable<BoardGame> GetAll()

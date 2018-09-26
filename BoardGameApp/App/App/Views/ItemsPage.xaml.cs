@@ -53,12 +53,7 @@ namespace App.Views
 
         private void Test_Pressed(object sender, EventArgs e)
         {
-            App.Service.GetAllBoardGamesByUser(new User("NotFromEarthMe"));
-        }
-
-        protected override bool OnBackButtonPressed()
-        {
-            return true;
+            var teste = App.Service.GetAllBoardGamesOffline();
         }
     }
 }
