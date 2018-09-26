@@ -3,7 +3,7 @@ using DomainModel.EntitiesDTO;
 using DomainModel.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DomainService
@@ -21,8 +21,18 @@ namespace DomainService
 
         public async Task<IEnumerable<BoardGame>> GetAllByUser(User user)
         {
-            IEnumerable<BoardGameDTO> boardGamesDTO = await _api.GetAllByUser(user);
-            return new List<BoardGame>();
+            List<BoardGameDTO> boardGamesDTO = (List<BoardGameDTO>) await _api.GetAllByUser(user);
+            List<BoardGame> games = new List<BoardGame>();
+
+            boardGamesDTO.ForEach(b =>
+            {
+                BoardGame boardGame = new BoardGame(b.gameId, b.name, b.image,
+                    b.minPlayers, b.maxPlayers, b.playingTime, b.isExpansion, b.averageRating, b.rank, b.numPlays, b.owned);
+
+                games.Add(boardGame);
+            });
+
+            return games;
         }
 
         public IEnumerable<BoardGame> GetAll()
