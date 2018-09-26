@@ -19,8 +19,8 @@ namespace App
         {
             InitializeComponent();
 
-            Service = new BoardGameAppService(new BoardGameService(new BoardGameSQLiteRepository(), new BoardGameRestApi()));
-            MainPage = new PlayerNumberPage();
+            Service = new BoardGameAppService(new BoardGameService(new BoardGameSQLiteRepository(Device.RuntimePlatform), new BoardGameRestApi()));
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

@@ -89,6 +89,10 @@ namespace DomainModel.Entities
             set => SetPropertyAndNotify(ref _owned, value);
         }
 
+        public BoardGame()
+        {
+        }
+
         [JsonConstructor]
         public BoardGame(int _gameId,
                             string _name,
