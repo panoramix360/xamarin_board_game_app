@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,14 +11,18 @@ using Xamarin.Forms.Xaml;
 namespace App.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class LoginPage : ContentPage
+	public partial class SearchPage : ContentPage
 	{
-		public LoginPage ()
+        SearchViewModel viewModel;
+
+        public SearchPage ()
 		{
 			InitializeComponent ();
-		}
 
-        async void OnLoginButtonClicked(object sender, EventArgs e)
+            BindingContext = viewModel = new SearchViewModel();
+        }
+
+        async void OnSearchButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ItemsPage());
             
