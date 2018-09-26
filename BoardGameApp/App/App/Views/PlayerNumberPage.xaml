@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Views.PlayerNumberPage">
+    <ContentPage.Content>
+        <StackLayout Margin="32">
+            <Label Text="O que vai jogar hoje?"
+                   FontSize="42"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="Nº Jogadores"
+                   FontSize="28"
+                    HorizontalOptions="Start" />
+
+            <Entry Keyboard="Numeric" FontSize="24" />
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Image Source="DotSelected.png" />
+                <Image Source="Dot.png" />
+                <Image Source="Dot.png" />
+            </StackLayout>
+
+            <Button Image="PlaySymbol.png"
+                    HorizontalOptions="EndAndExpand"
+                    BackgroundColor="Transparent" />
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

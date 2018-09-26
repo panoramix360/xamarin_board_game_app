@@ -20,6 +20,10 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Views\LoginPage.xaml">
+    <EmbeddedResource Update="Views\PlayerNumberPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PlayingTimePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

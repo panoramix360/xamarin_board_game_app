@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Views.PlayingTimePage"
+             xmlns:vm="clr-namespace:App.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vm:PlayingTimeViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Margin="32">
+            <Label Text="Quanto tempo você tem?"
+                   FontSize="42"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="Nº Jogadores"
+                   FontSize="28"
+                    HorizontalOptions="Start" />
+
+            <Picker Title="Selecione o tempo esperado"
+                    ItemsSource="{Binding PlayingTimeOptions}" />
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Image Source="DotSelected.png" />
+                <Image Source="Dot.png" />
+                <Image Source="Dot.png" />
+            </StackLayout>
+
+            <Button Image="PlaySymbol.png"
+                    HorizontalOptions="EndAndExpand"
+                    BackgroundColor="Transparent" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
