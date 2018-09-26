@@ -1,4 +1,5 @@
 ﻿using App.ViewModels;
+using DomainModel.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,33 +18,15 @@ namespace App.Views
 
         public SearchPage ()
 		{
-			InitializeComponent ();
+            InitializeComponent();
 
             BindingContext = viewModel = new SearchViewModel();
         }
 
         async void OnSearchButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ItemsPage());
-            
-            //var user = new User
-            //{
-            //    Username = usernameEntry.Text,
-            //    Password = passwordEntry.Text
-            //};
-
-            //var isValid = AreCredentialsCorrect(user);
-            //if (isValid)
-            //{
-            //    App.IsUserLoggedIn = true;
-            //    Navigation.InsertPageBefore(new MainPage(), this);
-            //    await Navigation.PopAsync();
-            //}
-            //else
-            //{
-            //    messageLabel.Text = "Login failed";
-            //    passwordEntry.Text = string.Empty;
-            //}
+            IEnumerable<BoardGame> games = await App.Service.GetAllBoardGamesByUser(new User(viewModel.SearchText));
+            await Navigation.PushAsync(new ItemsPage(games));
         }
     }
 }

@@ -12,6 +12,13 @@ namespace App.ViewModels
 {
     public class SearchViewModel : BaseViewModel
     {
+        string searchText = string.Empty;
+        public string SearchText
+        {
+            get { return searchText; }
+            set { SetProperty(ref searchText, value); }
+        }
+
         public SearchViewModel()
         {
             Title = "Busca de Usuário";
