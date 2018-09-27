@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App.Views.PlayerNumberPage">
     <ContentPage.Content>
-        <StackLayout Margin="32">
-            <Label Text="O que vai jogar hoje?"
-                   FontSize="42"
+        <StackLayout Margin="28">
+            <Label Text="O que vamos jogar hoje?"
+                   FontSize="38"
                     VerticalOptions="CenterAndExpand" 
                     HorizontalOptions="CenterAndExpand" />
 
@@ -16,17 +16,22 @@
             <Entry x:Name="numberOfPlayer" Keyboard="Numeric" FontSize="24" />
 
             <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="CenterAndExpand"
+                         HorizontalOptions="EndAndExpand"
                          VerticalOptions="CenterAndExpand">
-                <Image Source="DotSelected.png" />
-                <Image Source="Dot.png" />
-                <Image Source="Dot.png" />
-            </StackLayout>
+                
+                <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="EndAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                    <Image Source="DotSelected.png" Scale="0.2"/>
+                    <Image Source="Dot.png" Scale="0.2"/>
+                    <Image Source="Dot.png" Scale="0.2"/>
+                </StackLayout>
 
-            <Button Image="PlaySymbol.png"
+                <Button Image="PlaySymbol.png" Scale="0.2"
                     HorizontalOptions="EndAndExpand"
                     BackgroundColor="Transparent"
                     Clicked="OnNextPageClick" />
+            </StackLayout>
             
         </StackLayout>
     </ContentPage.Content>
