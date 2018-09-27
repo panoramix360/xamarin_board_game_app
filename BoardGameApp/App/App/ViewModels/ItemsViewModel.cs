@@ -19,16 +19,9 @@ namespace App.ViewModels
 
         public ItemsViewModel()
         {
-            Title = "Browse";
+            Title = "Jogos filtrados";
             Items = new ObservableCollection<BoardGame>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
-
-            MessagingCenter.Subscribe<NewItemPage, BoardGame>(this, "AddItem", async (obj, item) =>
-            {
-                var newItem = item as BoardGame;
-                //Items.Add(newItem);
-                //await DataStore.AddItemAsync(newItem);
-            });
         }
 
         async Task ExecuteLoadItemsCommand()
