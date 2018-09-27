@@ -18,12 +18,12 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="6"
+                        <StackLayout Padding="2"
                                      Orientation="Horizontal"
                                      HorizontalOptions="StartAndExpand"
                                      FlowDirection="LeftToRight"
                                      HeightRequest="80">
-                            <Image Aspect="AspectFill" Source="{Binding ImageUrl}"></Image>
+                            <Image Aspect="AspectFit" HeightRequest="80" WidthRequest="80" Source="{Binding ThumbnailUrl}"></Image>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
                                 <Label Text="{Binding Name}" 
                                     LineBreakMode="NoWrap" 

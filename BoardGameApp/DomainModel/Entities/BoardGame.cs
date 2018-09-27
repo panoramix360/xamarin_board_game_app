@@ -48,6 +48,13 @@ namespace DomainModel.Entities
             set => SetPropertyAndNotify(ref _imageUrl, value);
         }
 
+        private string _thumbnailUrl;
+        public string ThumbnailUrl
+        {
+            get => _thumbnailUrl;
+            set => SetPropertyAndNotify(ref _thumbnailUrl, value);
+        }
+
         public string PlayersRange
         {
             get => "Jogadores: " + _minPlayers + " - " + _maxPlayers;
@@ -122,6 +129,7 @@ namespace DomainModel.Entities
         public BoardGame(int _gameId,
                             string _name,
                             string _imageUrl,
+                            string _imageThumbnail,
                             int _minPlayers,
                             int _maxPlayers,
                             int _playingTime,
@@ -139,6 +147,7 @@ namespace DomainModel.Entities
             Description = _description ?? string.Empty;
             YearPublished = _yearPublished;
             ImageUrl = _imageUrl ?? string.Empty;
+            ThumbnailUrl = _imageThumbnail ?? string.Empty;
             MinPlayers = _minPlayers;
             MaxPlayers = _maxPlayers;
             PlayingTime = _playingTime;

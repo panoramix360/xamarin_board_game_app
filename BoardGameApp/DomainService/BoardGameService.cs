@@ -28,7 +28,7 @@ namespace DomainService
 
             boardGamesDTO.ForEach(b =>
             {
-                BoardGame boardGame = new BoardGame(b.gameId, b.name, b.image,
+                BoardGame boardGame = new BoardGame(b.gameId, b.name, b.image, b.thumbnail,
                     b.minPlayers, b.maxPlayers, b.playingTime, b.isExpansion, b.averageRating, b.rank, b.numPlays, b.owned);
 
                 games.Add(boardGame);
