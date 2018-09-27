@@ -26,22 +26,28 @@ namespace App.Views
 
         public async void OnNextPageClick(object sender, EventArgs e)
         {
-            switch(playingTime.SelectedIndex)
+            if (playingTime.SelectedIndex != -1)
             {
-                case 0:
-                    _filterSelection.PlayingTime = PlayingTimeEnum.ThirtyMinutes;
-                    break;
-                case 1:
-                    _filterSelection.PlayingTime = PlayingTimeEnum.OneHour;
-                    break;
-                case 2:
-                    _filterSelection.PlayingTime = PlayingTimeEnum.TwoHours;
-                    break;
-                case 3:
-                    _filterSelection.PlayingTime = PlayingTimeEnum.MoreThanTwoHours;
-                    break;
+                switch (playingTime.SelectedIndex)
+                {
+                    case 0:
+                        _filterSelection.PlayingTime = PlayingTimeEnum.ThirtyMinutes;
+                        break;
+                    case 1:
+                        _filterSelection.PlayingTime = PlayingTimeEnum.OneHour;
+                        break;
+                    case 2:
+                        _filterSelection.PlayingTime = PlayingTimeEnum.TwoHours;
+                        break;
+                    case 3:
+                        _filterSelection.PlayingTime = PlayingTimeEnum.MoreThanTwoHours;
+                        break;
+                }
+                await Navigation.PushAsync(new NumberOfPlaysPage(_filterSelection));
+            } else
+            {
+                await DisplayAlert("Alerta", "Informe o tempo esperado", "Cancelar");
             }
-            await Navigation.PushAsync(new ItemsPage(_filterSelection));
         }
     }
 }

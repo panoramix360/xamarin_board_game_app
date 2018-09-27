@@ -9,5 +9,6 @@ namespace App.Models
     {
         public int NumberOfPlayers { get; set; }
         public PlayingTimeEnum PlayingTime { get; set; }
+        public NumberOfPlaysEnum NumberOfPlays { get; set; }
     }
 }

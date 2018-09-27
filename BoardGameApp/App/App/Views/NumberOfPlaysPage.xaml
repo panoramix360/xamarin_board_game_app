@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Views.NumberOfPlaysPage"
+             xmlns:vm="clr-namespace:App.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vm:NumberOfPlaysViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Margin="32">
+            <Label Text="Ordenar por mais jogados?"
+                   FontSize="42"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+
+            <Picker x:Name="numberOfPlays" Title="Selecione o que prefere"
+                    ItemsSource="{Binding NumberOfPlaysOptions}" />
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Image Source="Dot.png" />
+                <Image Source="Dot.png" />
+                <Image Source="DotSelected.png" />
+            </StackLayout>
+
+            <Button Image="Tick.png"
+                    HorizontalOptions="EndAndExpand"
+                    BackgroundColor="Transparent"
+                    Clicked="OnFinishClick" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
