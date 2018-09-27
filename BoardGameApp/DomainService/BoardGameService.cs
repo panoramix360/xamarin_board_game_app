@@ -73,6 +73,26 @@ namespace DomainService
                 : data.OrderBy(g => g.NumPlays);
         }
 
+        public async Task<BoardGame> GetBoardGameById(int gameId)
+        {
+            BoardGameDetailDTO boardGameDetailDTO = await _api.GetBoardGameById(gameId);
+
+            BoardGame boardGame = new BoardGame();
+            boardGame.GameId = boardGameDetailDTO.gameId;
+            boardGame.Name = boardGameDetailDTO.name;
+            boardGame.Description = boardGameDetailDTO.description;
+            boardGame.YearPublished = boardGameDetailDTO.yearPublished;
+            boardGame.ImageUrl = boardGameDetailDTO.image;
+            boardGame.MinPlayers = boardGameDetailDTO.minPlayers;
+            boardGame.MaxPlayers = boardGameDetailDTO.maxPlayers;
+            boardGame.PlayingTime = boardGameDetailDTO.playingTime;
+            boardGame.IsExpansion = boardGameDetailDTO.isExpansion;
+            boardGame.AverageRating = boardGameDetailDTO.averageRating;
+            boardGame.Rank = boardGameDetailDTO.rank;
+
+            return boardGame;
+        }
+
         public IEnumerable<BoardGame> GetAll()
         {
             return _repository.GetAll();

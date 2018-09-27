@@ -36,5 +36,10 @@ namespace BoardGameApp
         {
             return _boardGameService.GetBoardGamesDatabase(filter);
         }
+
+        public Task<BoardGame> GetBoardGameById(int gameId)
+        {
+            return _boardGameService.GetBoardGameById(gameId);
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace DomainModel.Interfaces
     public interface IBoardGameAPI
     {
         Task<IEnumerable<BoardGameDTO>> GetAllByUser(User user);
+        Task<BoardGameDetailDTO> GetBoardGameById(int gameId);
     }
 }

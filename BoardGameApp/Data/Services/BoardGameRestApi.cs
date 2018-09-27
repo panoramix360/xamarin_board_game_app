@@ -12,6 +12,7 @@ namespace Data.Services
     {
         private RestService _restService;
         private string _collectionUrl = "collection/";
+        private string _thingUrl = "thing/";
 
         public BoardGameRestApi()
         {
@@ -25,6 +26,15 @@ namespace Data.Services
             var boardGamesDTO = JsonConvert.DeserializeObject<List<BoardGameDTO>>(strJson);
 
             return boardGamesDTO;
+        }
+
+        public async Task<BoardGameDetailDTO> GetBoardGameById(int gameId)
+        {
+            string strJson = await _restService.GetRequest(_thingUrl + gameId);
+
+            var boardGameDetailDTO = JsonConvert.DeserializeObject<BoardGameDetailDTO>(strJson);
+
+            return boardGameDetailDTO;
         }
     }
 }

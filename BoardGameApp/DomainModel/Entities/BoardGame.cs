@@ -27,6 +27,19 @@ namespace DomainModel.Entities
             set => SetPropertyAndNotify(ref _name, value);
         }
 
+        private string _description;
+        public string Description
+        {
+            get => _description;
+            set => SetPropertyAndNotify(ref _description, value);
+        }
+
+        private int _yearPublished;
+        public int YearPublished
+        {
+            get => _yearPublished;
+            set => SetPropertyAndNotify(ref _yearPublished, value);
+        }
 
         private string _imageUrl;
         public string ImageUrl
@@ -116,11 +129,15 @@ namespace DomainModel.Entities
                             double _averageRating,
                             int _rank,
                             int _numPlays,
-                            bool _owned)
+                            bool _owned,
+                            string _description = "",
+                            int _yearPublished = 0)
         {
             Id = Guid.NewGuid();
             GameId = _gameId;
             Name = _name ?? string.Empty;
+            Description = _description ?? string.Empty;
+            YearPublished = _yearPublished;
             ImageUrl = _imageUrl ?? string.Empty;
             MinPlayers = _minPlayers;
             MaxPlayers = _maxPlayers;

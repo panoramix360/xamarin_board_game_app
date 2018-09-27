@@ -22,6 +22,8 @@ namespace App.Views
         public ItemsPage()
         {
             InitializeComponent();
+
+            BindingContext = viewModel = new ItemsViewModel();
         }
 
         public ItemsPage(FilterSelection filterSelection)
@@ -33,11 +35,11 @@ namespace App.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
-            if (item == null)
+            var boardGameItem = args.SelectedItem as BoardGame;
+            if (boardGameItem == null)
                 return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(boardGameItem)));
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;

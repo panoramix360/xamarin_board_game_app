@@ -20,17 +20,11 @@ namespace App.Views
             BindingContext = this.viewModel = viewModel;
         }
 
-        public ItemDetailPage()
+        protected override void OnAppearing()
         {
-            InitializeComponent();
+            base.OnAppearing();
 
-            var item = new Item
-            {
-                Text = "Item 1",
-                Description = "This is an item description."
-            };
-
-            viewModel = new ItemDetailViewModel(item);
+            viewModel.LoadBoardGameCommand.Execute(null);
             BindingContext = viewModel;
         }
     }
