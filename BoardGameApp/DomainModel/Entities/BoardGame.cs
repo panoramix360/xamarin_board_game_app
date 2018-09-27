@@ -35,6 +35,11 @@ namespace DomainModel.Entities
             set => SetPropertyAndNotify(ref _imageUrl, value);
         }
 
+        public string PlayersRange
+        {
+            get => "Jogadores: " + _minPlayers + " - " + _maxPlayers;
+        }
+
         private int _minPlayers;
         public int MinPlayers
         {
@@ -47,6 +52,11 @@ namespace DomainModel.Entities
         {
             get => _maxPlayers;
             set => SetPropertyAndNotify(ref _maxPlayers, value);
+        }
+
+        public string PlayingTimeString
+        {
+            get => _playingTime + " minutos";
         }
 
         private int _playingTime;
