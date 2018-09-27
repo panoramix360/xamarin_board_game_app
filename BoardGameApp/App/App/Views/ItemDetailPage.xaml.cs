@@ -2,7 +2,7 @@
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using Xamarin.Essentials;
 using App.Models;
 using App.ViewModels;
 
@@ -24,8 +24,15 @@ namespace App.Views
         {
             base.OnAppearing();
 
-            viewModel.LoadBoardGameCommand.Execute(null);
-            BindingContext = viewModel;
+            var current = Connectivity.NetworkAccess;
+
+            if (current == NetworkAccess.Internet)
+            {
+                viewModel.LoadBoardGameCommand.Execute(null);
+            } else
+            {
+                DisplayAlert("Alerta", "Favor conectar a internet para ter acesso a essa funcionalidade", "Cancelar");
+            }
         }
     }
 }

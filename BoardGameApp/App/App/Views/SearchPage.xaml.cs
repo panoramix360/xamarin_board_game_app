@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace App.Views
 {
@@ -25,8 +26,16 @@ namespace App.Views
 
         async void OnSearchButtonClicked(object sender, EventArgs e)
         {
-            await App.Service.GetAllBoardGamesByUser(new User(viewModel.SearchText));
-            await Navigation.PushAsync(new PlayerNumberPage());
+            var current = Connectivity.NetworkAccess;
+
+            if (current == NetworkAccess.Internet)
+            {
+                await App.Service.GetAllBoardGamesByUser(new User(viewModel.SearchText));
+                await Navigation.PushAsync(new PlayerNumberPage());
+            } else
+            {
+                DisplayAlert("Alerta", "Favor conectar a internet para ter acesso a essa funcionalidade", "Cancelar");
+            }
         }
     }
 }
