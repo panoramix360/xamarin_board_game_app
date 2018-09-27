@@ -19,8 +19,6 @@ namespace App.Views
     {
         ItemsViewModel viewModel;
 
-        private FilterSelection _filterSelection;
-
         public ItemsPage()
         {
             InitializeComponent();
@@ -30,9 +28,7 @@ namespace App.Views
         {
             InitializeComponent();
 
-            _filterSelection = filterSelection;
-
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = viewModel = new ItemsViewModel(filterSelection);
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)

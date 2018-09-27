@@ -16,10 +16,12 @@ namespace App.ViewModels
     {
         public ObservableCollection<BoardGame> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
+        private FilterSelection _filterSelection;
 
-        public ItemsViewModel()
+        public ItemsViewModel(FilterSelection filterSelection)
         {
             Title = "Jogos filtrados";
+            _filterSelection = filterSelection;
             Items = new ObservableCollection<BoardGame>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
@@ -34,7 +36,7 @@ namespace App.ViewModels
             try
             {
                 Items.Clear();
-                var items = App.Service.GetAllBoardGamesOffline();
+                var items = App.Service.GetAllBoardGamesOffline(_filterSelection);
                 foreach (var item in items)
                 {
                     Items.Add(item);

@@ -1,4 +1,5 @@
-﻿using DomainModel.Entities;
+﻿using App.Models;
+using DomainModel.Entities;
 using DomainService;
 using System;
 using System.Collections.Generic;
@@ -31,9 +32,9 @@ namespace BoardGameApp
             return _boardGameService.GetAll();
         }
         
-        public IEnumerable<BoardGame> GetAllBoardGamesOffline()
+        public IEnumerable<BoardGame> GetAllBoardGamesOffline(FilterSelection filter)
         {
-            return _boardGameService.GetBoardGamesDatabase();
+            return _boardGameService.GetBoardGamesDatabase(filter);
         }
     }
 }

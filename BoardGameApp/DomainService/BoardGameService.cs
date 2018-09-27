@@ -1,4 +1,6 @@
-﻿using DomainModel.Entities;
+﻿using App.Models;
+using DomainModel.Entities;
+using DomainModel.Entities.Enums;
 using DomainModel.EntitiesDTO;
 using DomainModel.Interfaces;
 using System;
@@ -37,9 +39,38 @@ namespace DomainService
             return games;
         }
 
-        public IEnumerable<BoardGame> GetBoardGamesDatabase()
+        private int GetTimeInMinutes(PlayingTimeEnum playingTimeEnum)
         {
-            return _repository.GetAll();
+            switch (playingTimeEnum)
+            {
+                case PlayingTimeEnum.ThirtyMinutes:
+                    return 30;
+                    break;
+                case PlayingTimeEnum.OneHour:
+                    return 60;
+                    break;
+                case PlayingTimeEnum.TwoHours:
+                    return 120;
+                    break;
+                default:
+                    return int.MaxValue;
+                    break;
+            }
+        }
+
+        public IEnumerable<BoardGame> GetBoardGamesDatabase(FilterSelection filter)
+        {
+            int maxPlayingTime = GetTimeInMinutes(filter.PlayingTime);
+            bool orderMorePlayed = NumberOfPlaysEnum.MorePlayed.Equals(filter.NumberOfPlays);
+
+            var data = _repository.GetAll()
+                .Where(g => g.Owned
+                    && (filter.NumberOfPlayers >= g.MinPlayers && filter.NumberOfPlayers <= g.MaxPlayers)
+                    && g.PlayingTime <= maxPlayingTime);
+
+            return orderMorePlayed
+                ? data.OrderByDescending(g => g.NumPlays)
+                : data.OrderBy(g => g.NumPlays);
         }
 
         public IEnumerable<BoardGame> GetAll()
