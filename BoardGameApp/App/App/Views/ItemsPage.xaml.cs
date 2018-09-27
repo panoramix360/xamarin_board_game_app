@@ -23,7 +23,7 @@ namespace App.Views
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = viewModel = new ItemsViewModel(new FilterSelection());
         }
 
         public ItemsPage(FilterSelection filterSelection)
