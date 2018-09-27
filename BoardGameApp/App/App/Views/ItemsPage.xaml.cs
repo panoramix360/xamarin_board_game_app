@@ -19,9 +19,18 @@ namespace App.Views
     {
         ItemsViewModel viewModel;
 
+        private FilterSelection _filterSelection;
+
         public ItemsPage()
         {
             InitializeComponent();
+        }
+
+        public ItemsPage(FilterSelection filterSelection)
+        {
+            InitializeComponent();
+
+            _filterSelection = filterSelection;
 
             BindingContext = viewModel = new ItemsViewModel();
         }
@@ -49,11 +58,6 @@ namespace App.Views
 
             if (viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
-        }
-
-        private void Test_Pressed(object sender, EventArgs e)
-        {
-            var teste = App.Service.GetAllBoardGamesOffline();
         }
     }
 }

@@ -13,7 +13,7 @@
                    FontSize="28"
                     HorizontalOptions="Start" />
 
-            <Entry Keyboard="Numeric" FontSize="24" />
+            <Entry x:Name="numberOfPlayer" Keyboard="Numeric" FontSize="24" />
 
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="CenterAndExpand"
@@ -25,7 +25,8 @@
 
             <Button Image="PlaySymbol.png"
                     HorizontalOptions="EndAndExpand"
-                    BackgroundColor="Transparent" />
+                    BackgroundColor="Transparent"
+                    Clicked="OnNextPageClick" />
             
         </StackLayout>
     </ContentPage.Content>

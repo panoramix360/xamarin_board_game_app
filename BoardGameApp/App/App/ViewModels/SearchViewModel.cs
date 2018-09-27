@@ -21,7 +21,7 @@ namespace App.ViewModels
 
         public SearchViewModel()
         {
-            Title = "Busca de Usuário";
+            Title = "Board Game Matcher";
         }
     }
 }

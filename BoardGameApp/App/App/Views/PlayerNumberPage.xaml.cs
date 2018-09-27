@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,19 @@ namespace App.Views
         public PlayerNumberPage()
         {
             InitializeComponent();
+        }
+
+        public async void OnNextPageClick(object sender, EventArgs e)
+        {
+            if(numberOfPlayer.Text != null)
+            {
+                FilterSelection filterSelection = new FilterSelection();
+                filterSelection.NumberOfPlayers = int.Parse(numberOfPlayer.Text);
+                await Navigation.PushAsync(new PlayingTimePage(filterSelection));
+            } else
+            {
+                await DisplayAlert("Alerta", "Informe o número de jogadores", "Cancelar");
+            }
         }
     }
 }

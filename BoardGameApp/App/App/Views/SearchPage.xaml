@@ -5,7 +5,7 @@
              Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout VerticalOptions="StartAndExpand" Margin="35">
-            <Label Text="Digite o usuário para buscar os títulos" />
+            <Label Text="Digite o usuário para buscar os jogos" />
             <Entry x:Name="searchTextEntry" Text="{Binding SearchText}" HorizontalTextAlignment="Center" />
             <Button Text="Buscar" Clicked="OnSearchButtonClicked" />
             <Label x:Name="messageLabel" />

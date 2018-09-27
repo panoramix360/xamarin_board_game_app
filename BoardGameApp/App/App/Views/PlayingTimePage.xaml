@@ -15,24 +15,21 @@
                     VerticalOptions="CenterAndExpand" 
                     HorizontalOptions="CenterAndExpand" />
 
-            <Label Text="Nº Jogadores"
-                   FontSize="28"
-                    HorizontalOptions="Start" />
-
-            <Picker Title="Selecione o tempo esperado"
+            <Picker x:Name="playingTime" Title="Selecione o tempo esperado"
                     ItemsSource="{Binding PlayingTimeOptions}" />
 
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="CenterAndExpand"
                          VerticalOptions="CenterAndExpand">
-                <Image Source="DotSelected.png" />
                 <Image Source="Dot.png" />
+                <Image Source="DotSelected.png" />
                 <Image Source="Dot.png" />
             </StackLayout>
 
             <Button Image="PlaySymbol.png"
                     HorizontalOptions="EndAndExpand"
-                    BackgroundColor="Transparent" />
+                    BackgroundColor="Transparent"
+                    Clicked="OnNextPageClick" />
 
         </StackLayout>
     </ContentPage.Content>
