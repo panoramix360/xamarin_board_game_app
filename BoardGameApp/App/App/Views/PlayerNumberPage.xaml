@@ -22,17 +22,17 @@
                 <StackLayout Orientation="Horizontal"
                          HorizontalOptions="EndAndExpand"
                          VerticalOptions="CenterAndExpand">
-                    <Image Source="DotSelected.png" Scale="0.2"/>
-                    <Image Source="Dot.png" Scale="0.2"/>
-                    <Image Source="Dot.png" Scale="0.2"/>
+                    <Image Source="DotSelected.png" Scale="0.4"/>
+                    <Image Source="Dot.png" Scale="0.4"/>
+                    <Image Source="Dot.png" Scale="0.4"/>
                 </StackLayout>
 
-                <Button Image="PlaySymbol.png" Scale="0.2"
+                <Button Image="PlaySymbol.png" Scale="0.5"
                     HorizontalOptions="EndAndExpand"
                     BackgroundColor="Transparent"
                     Clicked="OnNextPageClick" />
             </StackLayout>
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

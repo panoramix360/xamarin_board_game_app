@@ -9,9 +9,9 @@
     </ContentPage.BindingContext>
     
     <ContentPage.Content>
-        <StackLayout Margin="32">
+        <StackLayout Margin="28">
             <Label Text="Quanto tempo você tem?"
-                   FontSize="42"
+                   FontSize="38"
                     VerticalOptions="CenterAndExpand" 
                     HorizontalOptions="CenterAndExpand" />
 
@@ -19,18 +19,23 @@
                     ItemsSource="{Binding PlayingTimeOptions}" />
 
             <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="EndAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                
+                <StackLayout Orientation="Horizontal"
                          HorizontalOptions="CenterAndExpand"
                          VerticalOptions="CenterAndExpand">
-                <Image Source="Dot.png" />
-                <Image Source="DotSelected.png" />
-                <Image Source="Dot.png" />
-            </StackLayout>
+                    <Image Source="Dot.png" Scale="0.4"/>
+                    <Image Source="DotSelected.png" Scale="0.4"/>
+                    <Image Source="Dot.png" Scale="0.4"/>
+                </StackLayout>
 
-            <Button Image="PlaySymbol.png"
+                <Button Image="PlaySymbol.png" Scale="0.5"
                     HorizontalOptions="EndAndExpand"
                     BackgroundColor="Transparent"
                     Clicked="OnNextPageClick" />
-
+            </StackLayout>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

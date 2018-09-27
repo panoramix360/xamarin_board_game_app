@@ -9,27 +9,33 @@
     </ContentPage.BindingContext>
     
     <ContentPage.Content>
-        <StackLayout Margin="32">
+        <StackLayout Margin="28">
             <Label Text="Ordenar por mais jogados?"
-                   FontSize="42"
+                   FontSize="38"
                     VerticalOptions="CenterAndExpand" 
                     HorizontalOptions="CenterAndExpand" />
 
             <Picker x:Name="numberOfPlays" Title="Selecione o que prefere"
                     ItemsSource="{Binding NumberOfPlaysOptions}" />
 
+
             <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="EndAndExpand"
+                         VerticalOptions="CenterAndExpand">
+
+                <StackLayout Orientation="Horizontal"
                          HorizontalOptions="CenterAndExpand"
                          VerticalOptions="CenterAndExpand">
-                <Image Source="Dot.png" />
-                <Image Source="Dot.png" />
-                <Image Source="DotSelected.png" />
-            </StackLayout>
+                    <Image Source="Dot.png" Scale="0.4"/>
+                    <Image Source="Dot.png" Scale="0.4"/>
+                    <Image Source="DotSelected.png" Scale="0.4"/>
+                </StackLayout>
 
-            <Button Image="Tick.png"
+                <Button Image="Tick.png" Scale="0.5"
                     HorizontalOptions="EndAndExpand"
                     BackgroundColor="Transparent"
                     Clicked="OnFinishClick" />
+            </StackLayout>
 
         </StackLayout>
     </ContentPage.Content>
