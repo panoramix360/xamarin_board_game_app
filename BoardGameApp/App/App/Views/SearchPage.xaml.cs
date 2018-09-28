@@ -30,8 +30,10 @@ namespace App.Views
 
             if (current == NetworkAccess.Internet)
             {
+                loading.IsVisible = true;
                 await App.Service.GetAllBoardGamesByUser(new User(viewModel.SearchText));
                 await Navigation.PushAsync(new PlayerNumberPage());
+                loading.IsVisible = false;
             } else
             {
                 DisplayAlert("Alerta", "Favor conectar a internet para ter acesso a essa funcionalidade", "Cancelar");

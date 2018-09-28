@@ -9,6 +9,8 @@
             <Entry x:Name="searchTextEntry" Text="{Binding SearchText}" HorizontalTextAlignment="Center" />
             <Button Text="Buscar" Clicked="OnSearchButtonClicked" />
             <Label x:Name="messageLabel" />
+
+            <ActivityIndicator x:Name="loading" Color="Blue" IsVisible="False" IsRunning="True" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -10,15 +10,14 @@ namespace App.ViewModels
     public class ItemDetailViewModel : BaseViewModel
     {
         public BoardGame BoardGame { get; set; }
-        public BoardGame BoardGameDetail { get; set; }
+        public int GameId { get; set; }
 
         public Command LoadBoardGameCommand { get; set; }
 
         public ItemDetailViewModel(BoardGame boardGame = null)
         {
             Title = boardGame?.Name;
-            BoardGame = boardGame;
-
+            GameId = boardGame.GameId;
             LoadBoardGameCommand = new Command(async () => await ExecuteLoadBoardGameCommand());
         }
 
@@ -31,9 +30,7 @@ namespace App.ViewModels
 
             try
             {
-                var boardGame = await App.Service.GetBoardGameById(BoardGame.GameId);
-                BoardGameDetail.Description = boardGame.Description;
-                BoardGameDetail.YearPublished = boardGame.YearPublished;
+                BoardGame = await App.Service.GetBoardGameById(GameId);
             }
             catch (Exception ex)
             {

@@ -9,9 +9,9 @@
             <Label Text="Nome:" FontSize="Medium" />
             <Label Text="{Binding BoardGame.Name}" FontSize="Small"/>
             <Label Text="Descrição:" FontSize="Medium" />
-            <Label Text="{Binding BoardGameDetail.Description}" FontSize="Small"/>
+            <Label Text="{Binding BoardGame.Description}" FontSize="Small"/>
             <Label Text="Ano de Publicação:" FontSize="Medium" />
-            <Label Text="{Binding BoardGameDetail.YearPublished}" FontSize="Small"/>
+            <Label Text="{Binding BoardGame.YearPublished}" FontSize="Small"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
