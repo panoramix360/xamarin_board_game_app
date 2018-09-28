@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 using App.Models;
 using App.Views;
@@ -39,7 +40,17 @@ namespace App.Views
             if (boardGameItem == null)
                 return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(boardGameItem)));
+            var current = Connectivity.NetworkAccess;
+
+            if (current == NetworkAccess.Internet)
+            {
+                var boardGame = await App.Service.GetBoardGameById(boardGameItem.GameId);
+                await Navigation.PushAsync(new ItemDetailPage(boardGame));
+            }
+            else
+            {
+                DisplayAlert("Alerta", "Favor conectar a internet para ter acesso a essa funcionalidade", "Cancelar");
+            }
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;

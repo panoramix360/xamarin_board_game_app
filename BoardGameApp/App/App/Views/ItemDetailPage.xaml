@@ -1,17 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="App.Views.ItemDetailPage"
-             Title="{Binding Title}">
+             x:Class="App.Views.ItemDetailPage">
 
     <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="15">
-            <Label Text="Nome:" FontSize="Medium" />
-            <Label Text="{Binding BoardGame.Name}" FontSize="Small"/>
-            <Label Text="Descrição:" FontSize="Medium" />
-            <Label Text="{Binding BoardGame.Description}" FontSize="Small"/>
-            <Label Text="Ano de Publicação:" FontSize="Medium" />
-            <Label Text="{Binding BoardGame.YearPublished}" FontSize="Small"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <Image x:Name="image"
+                       Aspect="AspectFit"/>
+
+                <Label Text="Descrição:" FontSize="Medium" />
+                <Label x:Name="description" FontSize="Small"/>
+
+                <Label Text="Ano de Publicação:" FontSize="Medium" />
+                <Label x:Name="yearPublished" FontSize="Small"/>
+                
+                <Label Text="Número de Jogadores:" FontSize="Medium" />
+                <Label x:Name="numberOfPlayers" FontSize="Small"/>
+
+                <Label Text="Tempo de Jogo:" FontSize="Medium" />
+                <Label x:Name="playtime" FontSize="Small"/>
+
+                <Button Clicked="OnGoToBGG_Clicked" Text="Ir para o BGG" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

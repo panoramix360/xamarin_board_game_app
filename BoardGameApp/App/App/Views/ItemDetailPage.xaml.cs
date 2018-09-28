@@ -5,34 +5,32 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using App.Models;
 using App.ViewModels;
+using DomainModel.Entities;
 
 namespace App.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemDetailPage : ContentPage
     {
-        ItemDetailViewModel viewModel;
+        public BoardGame BoardGame { get; set; }
 
-        public ItemDetailPage(ItemDetailViewModel viewModel)
+        public ItemDetailPage(BoardGame boardGame)
         {
             InitializeComponent();
 
-            BindingContext = this.viewModel = viewModel;
+            Title = boardGame.Name;
+            BoardGame = boardGame;
+
+            image.Source = boardGame.ImageUrl;
+            description.Text = boardGame.Description;
+            yearPublished.Text = boardGame.YearPublished + "";
+            numberOfPlayers.Text = boardGame.MinPlayers + "-" + boardGame.MaxPlayers + " jogadores";
+            playtime.Text = boardGame.PlayingTime + " minutos";
         }
 
-        protected override void OnAppearing()
+        public async void OnGoToBGG_Clicked(object sender, EventArgs e)
         {
-            base.OnAppearing();
-
-            var current = Connectivity.NetworkAccess;
-
-            if (current == NetworkAccess.Internet)
-            {
-                viewModel.LoadBoardGameCommand.Execute(null);
-            } else
-            {
-                DisplayAlert("Alerta", "Favor conectar a internet para ter acesso a essa funcionalidade", "Cancelar");
-            }
+            await Browser.OpenAsync(new Uri("https://boardgamegeek.com/boardgame/" + BoardGame.GameId), BrowserLaunchMode.SystemPreferred);
         }
     }
 }

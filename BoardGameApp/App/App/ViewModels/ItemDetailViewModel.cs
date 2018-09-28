@@ -9,37 +9,9 @@ namespace App.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public BoardGame BoardGame { get; set; }
-        public int GameId { get; set; }
-
-        public Command LoadBoardGameCommand { get; set; }
-
-        public ItemDetailViewModel(BoardGame boardGame = null)
+        public ItemDetailViewModel(BoardGame boardGame)
         {
-            Title = boardGame?.Name;
-            GameId = boardGame.GameId;
-            LoadBoardGameCommand = new Command(async () => await ExecuteLoadBoardGameCommand());
-        }
-
-        async Task ExecuteLoadBoardGameCommand()
-        {
-            if (IsBusy)
-                return;
-
-            IsBusy = true;
-
-            try
-            {
-                BoardGame = await App.Service.GetBoardGameById(GameId);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
-            finally
-            {
-                IsBusy = false;
-            }
+            Title = boardGame.Name;
         }
     }
 }
